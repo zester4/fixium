@@ -20,39 +20,45 @@ import NotFound from "./pages/NotFound";
 import Community from "./pages/Community";
 import PostDetail from "./pages/PostDetail";
 import CreatePost from "./pages/CreatePost";
+import Pricing from "./pages/Pricing";
+
+import { HelmetProvider } from "react-helmet-async";
 
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/my-repairs" element={<MyRepairs />} />
-            <Route path="/my-guides" element={<MyGuides />} />
-            <Route path="/technician-apply" element={<TechnicianApply />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/help" element={<Help />} />
-            <Route path="/privacy" element={<PrivacyPolicy />} />
-            <Route path="/terms" element={<TermsOfService />} />
-            <Route path="/community" element={<Community />} />
-            <Route path="/community/new" element={<CreatePost />} />
-            <Route path="/community/:id" element={<PostDetail />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </AuthProvider>
-  </QueryClientProvider>
+  <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/my-repairs" element={<MyRepairs />} />
+              <Route path="/my-guides" element={<MyGuides />} />
+              <Route path="/technician-apply" element={<TechnicianApply />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/help" element={<Help />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<TermsOfService />} />
+              <Route path="/community" element={<Community />} />
+              <Route path="/community/new" element={<CreatePost />} />
+              <Route path="/community/:id" element={<PostDetail />} />
+              <Route path="/pricing" element={<Pricing />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </AuthProvider>
+    </QueryClientProvider>
+  </HelmetProvider>
 );
 
 export default App;

@@ -3,12 +3,17 @@ import { Wrench, Heart, Zap, Globe, ArrowLeft, ShieldCheck, Leaf, Users } from '
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { GlobalHeader } from '@/components/layout/GlobalHeader';
+import { SEO } from '@/components/seo/SEO';
 
 export default function About() {
   const navigate = useNavigate();
 
   return (
     <div className="min-h-screen flex flex-col bg-background relative selection:bg-primary selection:text-primary-foreground">
+      <SEO
+        title="Our Philosophy"
+        description="Learn about Fixium's mission to curb global e-waste through visual intelligence and community-driven repair democratization."
+      />
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none overflow-hidden">
         <svg width="100%" height="100%">

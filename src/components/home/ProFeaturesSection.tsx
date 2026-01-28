@@ -73,7 +73,7 @@ export function ProFeaturesSection({ isPro, isLoggedIn }: ProFeaturesSectionProp
               </p>
             </div>
             {!isPro && (
-              <Link to={isLoggedIn ? '/profile' : '/auth'}>
+              <Link to="/pricing">
                 <Button size="sm" className="bg-amber-600 hover:bg-amber-700 text-white font-mono text-[10px] uppercase tracking-widest px-4 h-9 shadow-sm">
                   {isLoggedIn ? 'UPGRADE' : 'SIGN UP'}
                 </Button>

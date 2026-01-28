@@ -107,7 +107,7 @@ export const WelcomeScreen = forwardRef<HTMLDivElement>((_, ref) => {
                   </Button>
 
                   {!isPro && (
-                    <Link to={user ? "/profile" : "/auth"}>
+                    <Link to="/pricing">
                       <Button variant="outline" size="lg" className="h-14 sm:h-16 px-8 sm:px-10 text-[11px] sm:text-xs font-mono font-bold tracking-[0.2em] border-2 group rounded-full border-primary/20 hover:border-primary/50">
                         <Crown className="w-4 h-4 mr-3 text-amber-500 group-hover:scale-125 transition-transform" />
                         Explore Pro

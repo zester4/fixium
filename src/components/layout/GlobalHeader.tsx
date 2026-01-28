@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
 
 const NAV_LINKS = [
+    { label: 'Pricing', path: '/pricing', icon: Sparkles },
     { label: 'Community', path: '/community', icon: Radio },
     { label: 'About', path: '/about', icon: Info },
     { label: 'Contact', path: '/contact', icon: Mail },

@@ -8,6 +8,8 @@ import { DiagnosisScreen } from '@/components/screens/DiagnosisScreen';
 import { RepairGuideScreen } from '@/components/screens/RepairGuideScreen';
 import { CompletionScreen } from '@/components/screens/CompletionScreen';
 import { useAuth } from '@/contexts/AuthContext';
+import { SEO } from '@/components/seo/SEO';
+import { StructuredData } from '@/components/seo/StructuredData';
 
 const Index = () => {
   const currentScreen = useRepairStore((state) => state.currentScreen);
@@ -24,7 +26,25 @@ const Index = () => {
     'completion': <CompletionScreen />,
   };
 
-  return screens[currentScreen] || <WelcomeScreen />;
+  const orgStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Fixium",
+    "url": window.location.origin,
+    "logo": `${window.location.origin}/logo-fixium.png`,
+    "description": "AI-powered device repair guidance companion.",
+    "sameAs": [
+      "https://twitter.com/Fixium"
+    ]
+  };
+
+  return (
+    <>
+      <SEO />
+      <StructuredData data={orgStructuredData} />
+      {screens[currentScreen] || <WelcomeScreen />}
+    </>
+  );
 };
 
 export default Index;

@@ -23,6 +23,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useNavigate } from 'react-router-dom';
+import { SEO } from '@/components/seo/SEO';
 
 const categories = [
   {
@@ -78,6 +79,10 @@ export default function Help() {
 
   return (
     <div className="min-h-screen flex flex-col bg-background relative selection:bg-primary selection:text-primary-foreground">
+      <SEO
+        title="Help & Support"
+        description="Access technical support, repair guides, and safety protocols for fixing your devices with Fixium's smart assistant."
+      />
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none overflow-hidden">
         <svg width="100%" height="100%">
