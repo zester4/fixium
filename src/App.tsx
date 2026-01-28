@@ -21,6 +21,9 @@ import Community from "./pages/Community";
 import PostDetail from "./pages/PostDetail";
 import CreatePost from "./pages/CreatePost";
 import Pricing from "./pages/Pricing";
+import Marketplace from "./pages/Marketplace";
+import CreateJob from "./pages/CreateJob";
+import ContractReview from "./pages/ContractReview";
 
 import { HelmetProvider } from "react-helmet-async";
 
@@ -51,6 +54,9 @@ const App = () => (
               <Route path="/community/new" element={<CreatePost />} />
               <Route path="/community/:id" element={<PostDetail />} />
               <Route path="/pricing" element={<Pricing />} />
+              <Route path="/marketplace" element={<Marketplace />} />
+              <Route path="/marketplace/new" element={<CreateJob />} />
+              <Route path="/contract/:id" element={<ContractReview />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

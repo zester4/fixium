@@ -124,7 +124,7 @@ export default function Pricing() {
                         transition={{ duration: 0.5 }}
                     >
                         <h1 className="text-[12vw] sm:text-7xl font-black tracking-tighter text-foreground mb-6 uppercase italic leading-[0.85] sm:leading-[0.9]">
-                            Precision <span className="text-primary not-italic">Value.</span>
+                            Simple <span className="text-primary not-italic">Pricing.</span>
                         </h1>
                         <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-12">
                             Scale your repair capabilities with our AI-powered intelligence. Choose a plan that fits your technical workflow.
@@ -156,8 +156,8 @@ export default function Pricing() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: idx * 0.1 }}
                             className={`relative flex flex-col p-8 rounded-[32px] border transition-all duration-500 group ${tier.mostPopular
-                                    ? 'bg-foreground text-background border-primary shadow-2xl scale-105 z-20'
-                                    : 'bg-muted/10 border-border/40 hover:border-primary/30 z-10'
+                                ? 'bg-foreground text-background border-primary shadow-2xl scale-105 z-20'
+                                : 'bg-muted/10 border-border/40 hover:border-primary/30 z-10'
                                 }`}
                         >
                             {tier.mostPopular && (
@@ -199,8 +199,8 @@ export default function Pricing() {
                             <Button
                                 onClick={() => tier.id === 'tier-business' ? navigate('/contact') : navigate('/auth')}
                                 className={`w-full h-14 rounded-2xl font-mono text-[10px] font-black uppercase tracking-[0.2em] transition-all ${tier.mostPopular
-                                        ? 'bg-background text-foreground hover:bg-primary hover:text-primary-foreground'
-                                        : 'bg-foreground text-background hover:bg-primary'
+                                    ? 'bg-background text-foreground hover:bg-primary hover:text-primary-foreground'
+                                    : 'bg-foreground text-background hover:bg-primary'
                                     }`}
                             >
                                 {tier.cta}
@@ -216,7 +216,7 @@ export default function Pricing() {
                         <div className="lg:col-span-4">
                             <div className="flex items-center gap-3 mb-4">
                                 <HelpCircle className="w-5 h-5 text-primary" />
-                                <h2 className="font-mono text-[10px] font-black text-primary uppercase tracking-[0.4em]">Inquiry_Center</h2>
+                                <h2 className="font-mono text-[10px] font-black text-primary uppercase tracking-[0.4em]">Common Questions</h2>
                             </div>
                             <h3 className="text-3xl font-black uppercase tracking-tighter leading-none mb-6">Frequently Asked Questions.</h3>
                             <p className="text-muted-foreground leading-relaxed">Everything you need to know about our plans, billing, and system capabilities.</p>
@@ -253,7 +253,7 @@ export default function Pricing() {
             <footer className="py-16 bg-muted/10 border-t border-border/30 mt-auto">
                 <div className="max-w-7xl mx-auto px-6 text-center">
                     <p className="text-[10px] text-muted-foreground/40 font-mono uppercase tracking-[0.4em]">
-                        SYSTEM_INTEGRITY_CHECK // FINANCE_MODULE_v4 // {new Date().getFullYear()}
+                        FIXIUM PREMIUM SERVICES // {new Date().getFullYear()}
                     </p>
                 </div>
             </footer>

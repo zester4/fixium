@@ -71,33 +71,38 @@ export default function Admin() {
 
   const fetchApplications = async () => {
     setIsLoading(true);
+    console.log('Fetching applications for tab:', activeTab);
 
-    const { data, error } = await supabase
-      .from('technician_applications')
-      .select(`
-        *,
-        profile:profiles!technician_applications_profiles_fkey(display_name, avatar_url)
-      `)
-      .eq('status', activeTab as 'pending' | 'approved' | 'rejected')
-      .order('created_at', { ascending: false });
+    try {
+      const { data, error } = await supabase
+        .from('technician_applications')
+        .select(`
+          *,
+          profile:profiles(display_name, avatar_url)
+        `)
+        .eq('status', activeTab as 'pending' | 'approved' | 'rejected')
+        .order('created_at', { ascending: false });
 
-    if (error) {
-      console.error('CRITICAL DATABASE ERROR:', error);
-      toast({
-        title: 'Query Failed',
-        description: error.message || 'Failed to load applications.',
-        variant: 'destructive',
-      });
-    } else {
-      // Process profiles (Supabase sometimes returns an array for joins)
-      const formattedApps = (data || []).map((app) => ({
-        ...app,
-        profile: Array.isArray(app.profile) ? app.profile[0] : app.profile,
-      }));
-      setApplications(formattedApps);
+      if (error) {
+        console.error('CRITICAL DATABASE ERROR:', error);
+        toast({
+          title: 'Query Failed',
+          description: error.message || 'Failed to load applications.',
+          variant: 'destructive',
+        });
+      } else {
+        // Process profiles (Supabase sometimes returns an array for joins)
+        const formattedApps = (data || []).map((app: any) => ({
+          ...app,
+          profile: Array.isArray(app.profile) ? app.profile[0] : app.profile,
+        }));
+        setApplications(formattedApps);
+      }
+    } catch (err: any) {
+      console.error('Unexpected fetch error:', err);
+    } finally {
+      setIsLoading(false);
     }
-
-    setIsLoading(false);
   };
 
   const handleApplication = async (applicationId: string, action: 'approve' | 'reject') => {
@@ -160,10 +165,24 @@ export default function Admin() {
     rejected: applications.filter(a => a.status === 'rejected').length,
   };
 
-  if (isAuthLoading || (user && !isAdmin)) {
+  if (isAuthLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      <div className="min-h-screen flex flex-col items-center justify-center bg-background gap-4">
+        <Loader2 className="w-10 h-10 animate-spin text-primary/40" />
+        <p className="font-mono text-xs uppercase tracking-[0.3em] animate-pulse text-muted-foreground">Authenticating Admin...</p>
+      </div>
+    );
+  }
+
+  if (user && !isAdmin) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-background p-6 text-center">
+        <Shield className="w-16 h-16 text-destructive/20 mb-6" />
+        <h1 className="text-2xl font-black uppercase tracking-tight mb-2">Access Denied</h1>
+        <p className="text-muted-foreground text-sm max-w-xs mb-8">
+          You are not authorized for the command center. Redirecting to home...
+        </p>
+        <Loader2 className="w-6 h-6 animate-spin text-primary/20" />
       </div>
     );
   }
@@ -292,9 +311,30 @@ export default function Admin() {
                       {/* Credentials */}
                       <div className="p-4 rounded-xl bg-muted/50 border border-border/50">
                         <p className="text-[10px] uppercase font-mono tracking-widest text-muted-foreground mb-3 flex items-center gap-2">
-                          <Briefcase className="w-3 h-3" /> Technical Audit
+                          <Briefcase className="w-3 h-3" /> Expertise Overview
                         </p>
                         <p className="text-sm leading-relaxed mb-4">{app.credentials}</p>
+
+                        {/* Enhanced Metadata */}
+                        {(() => {
+                          const metadata = app.metadata as any;
+                          return (
+                            <div className="grid sm:grid-cols-2 gap-4 mb-4">
+                              {metadata?.certifications && (
+                                <div className="p-3 rounded-lg bg-background border border-border/40">
+                                  <p className="text-[8px] font-mono uppercase text-primary/60 mb-1 tracking-widest">Certifications</p>
+                                  <p className="text-[11px] leading-tight">{metadata.certifications}</p>
+                                </div>
+                              )}
+                              {metadata?.equipment && (
+                                <div className="p-3 rounded-lg bg-background border border-border/40">
+                                  <p className="text-[8px] font-mono uppercase text-primary/60 mb-1 tracking-widest">Hardware & Tools</p>
+                                  <p className="text-[11px] leading-tight">{metadata.equipment}</p>
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })()}
 
                         {/* Links & Files */}
                         <div className="space-y-3 pt-3 border-t border-border/30">

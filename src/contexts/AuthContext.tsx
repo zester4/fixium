@@ -32,35 +32,44 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isAdmin, setIsAdmin] = useState(false);
 
   const fetchProfile = async (userId: string) => {
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('user_id', userId)
-      .maybeSingle();
+    console.log('Fixium Auth: Fetching profile and roles for:', userId);
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('user_id', userId)
+        .maybeSingle();
 
-    if (data) {
-      setProfile(data);
-      setIsPro(data.is_pro && (!data.subscription_expires_at || new Date(data.subscription_expires_at) > new Date()));
+      if (error) console.error('Fixium Auth: Profile query error:', error);
+      if (data) {
+        setProfile(data);
+        setIsPro(data.is_pro && (!data.subscription_expires_at || new Date(data.subscription_expires_at) > new Date()));
+      }
+
+      // Check technician status
+      const { data: techData, error: techError } = await supabase
+        .from('technician_applications')
+        .select('status')
+        .eq('user_id', userId)
+        .maybeSingle();
+
+      if (techError) console.error('Fixium Auth: Tech status check error:', techError);
+      setIsVerifiedTechnician(techData?.status === 'approved');
+
+      // Check admin role
+      const { data: roleData, error: roleError } = await supabase
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', userId)
+        .eq('role', 'admin')
+        .maybeSingle();
+
+      if (roleError) console.error('Fixium Auth: Admin role check error:', roleError);
+      console.log('Fixium Auth: Role data retrieved:', roleData);
+      setIsAdmin(!!roleData);
+    } catch (err) {
+      console.error('Fixium Auth: Critical error in fetchProfile:', err);
     }
-
-    // Check technician status
-    const { data: techData } = await supabase
-      .from('technician_applications')
-      .select('status')
-      .eq('user_id', userId)
-      .maybeSingle();
-
-    setIsVerifiedTechnician(techData?.status === 'approved');
-
-    // Check admin role
-    const { data: roleData } = await supabase
-      .from('user_roles')
-      .select('role')
-      .eq('user_id', userId)
-      .eq('role', 'admin')
-      .maybeSingle();
-
-    setIsAdmin(!!roleData);
   };
 
   const refreshProfile = async () => {
@@ -73,37 +82,59 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     let mounted = true;
 
     async function initializeAuth() {
-      // 1. Get initial session
-      const { data: { session: initialSession } } = await supabase.auth.getSession();
+      console.log('Fixium Auth: Initializing...');
+      try {
+        // 1. Get initial session
+        const { data: { session: initialSession }, error: sessionError } = await supabase.auth.getSession();
 
-      if (!mounted) return;
+        if (sessionError) {
+          console.error('Fixium Auth: Session retrieval error:', sessionError);
+        }
 
-      if (initialSession?.user) {
-        setSession(initialSession);
-        setUser(initialSession.user);
-        await fetchProfile(initialSession.user.id);
+        if (!mounted) return;
+
+        if (initialSession?.user) {
+          console.log('Fixium Auth: Found active session for:', initialSession.user.id);
+          setSession(initialSession);
+          setUser(initialSession.user);
+          await fetchProfile(initialSession.user.id);
+        } else {
+          console.log('Fixium Auth: No active session detected.');
+        }
+      } catch (err) {
+        console.error('Fixium Auth: Unexpected initialization crash:', err);
+      } finally {
+        if (mounted) {
+          console.log('Fixium Auth: Initialization complete. Resolving loader.');
+          setIsLoading(false);
+        }
       }
-
-      setIsLoading(false);
 
       // 2. Set up listener for future changes
       const { data: { subscription } } = supabase.auth.onAuthStateChange(
         async (event, currentSession) => {
+          console.log('Fixium Auth: State change detected:', event);
           if (!mounted) return;
 
           setSession(currentSession);
           setUser(currentSession?.user ?? null);
 
-          if (currentSession?.user) {
-            // If the user change, we might need to show loading again or just fetch
-            await fetchProfile(currentSession.user.id);
-          } else {
-            setProfile(null);
-            setIsPro(false);
-            setIsVerifiedTechnician(false);
-            setIsAdmin(false);
+          try {
+            if (currentSession?.user) {
+              await fetchProfile(currentSession.user.id);
+            } else {
+              setProfile(null);
+              setIsPro(false);
+              setIsVerifiedTechnician(false);
+              setIsAdmin(false);
+            }
+          } catch (err) {
+            console.error('Fixium Auth: State change handler error:', err);
+          } finally {
+            if (mounted) {
+              setIsLoading(false);
+            }
           }
-          setIsLoading(false);
         }
       );
 

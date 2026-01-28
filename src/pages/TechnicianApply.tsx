@@ -55,6 +55,8 @@ export default function TechnicianApply() {
     experienceYears: '',
     credentials: '',
     specialties: [] as string[],
+    certifications: '',
+    equipment: '',
     files: [] as File[],
   });
 
@@ -133,6 +135,8 @@ export default function TechnicianApply() {
             full_name: formData.fullName,
             linkedin: formData.linkedin,
             portfolio: formData.portfolio,
+            certifications: formData.certifications,
+            equipment: formData.equipment,
             file_attachments: fileUrls
           }
         });
@@ -201,7 +205,7 @@ export default function TechnicianApply() {
         {isLoading ? (
           <div className="flex flex-col items-center justify-center py-24 gap-4">
             <Loader2 className="w-10 h-10 animate-spin text-primary/40" />
-            <p className="font-mono text-[10px] uppercase tracking-widest animate-pulse">Checking Registry...</p>
+            <p className="font-mono text-[10px] uppercase tracking-widest animate-pulse">Syncing application data...</p>
           </div>
         ) : existingApplication ? (
           <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }}>
@@ -224,12 +228,12 @@ export default function TechnicianApply() {
 
                 <div className="space-y-4 font-mono text-[10px] uppercase tracking-wider">
                   <div className="flex justify-between border-b border-border/30 pb-2">
-                    <span className="text-muted-foreground">Field:</span>
-                    <span className="text-foreground font-bold">Technician</span>
+                    <span className="text-muted-foreground">Role:</span>
+                    <span className="text-foreground font-bold">Vetted Specialist</span>
                   </div>
                   <div className="flex justify-between border-b border-border/30 pb-2">
-                    <span className="text-muted-foreground">Reputation:</span>
-                    <span className="text-foreground font-bold">Tier 1 Initiated</span>
+                    <span className="text-muted-foreground">Status:</span>
+                    <span className="text-foreground font-bold">Standard Professional</span>
                   </div>
                 </div>
               </CardContent>
@@ -324,15 +328,37 @@ export default function TechnicianApply() {
                     ))}
                   </div>
 
-                  <div className="space-y-2 pt-4">
-                    <Label className="text-[10px] uppercase tracking-widest font-bold opacity-70">Technician Bio & Credentials</Label>
-                    <Textarea
-                      placeholder="Briefly describe your workshop setup or key certifications..."
-                      className="resize-none"
-                      rows={4}
-                      value={formData.credentials}
-                      onChange={e => setFormData({ ...formData, credentials: e.target.value })}
-                    />
+                  <div className="space-y-4 pt-4">
+                    <div className="space-y-2">
+                      <Label className="text-[10px] uppercase tracking-widest font-bold opacity-70">Certifications & Training</Label>
+                      <Textarea
+                        placeholder="e.g., Apple Certified iOS Technician, CompTIA A+..."
+                        className="resize-none"
+                        rows={3}
+                        value={formData.certifications}
+                        onChange={e => setFormData({ ...formData, certifications: e.target.value })}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="text-[10px] uppercase tracking-widest font-bold opacity-70">Workshop Inventory / Specialized Gear</Label>
+                      <Textarea
+                        placeholder="e.g., JBC Micro-soldering station, Thermal Camera, Oscilloscope..."
+                        className="resize-none"
+                        rows={3}
+                        value={formData.equipment}
+                        onChange={e => setFormData({ ...formData, equipment: e.target.value })}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="text-[10px] uppercase tracking-widest font-bold opacity-70">General Bio & Career Summary</Label>
+                      <Textarea
+                        placeholder="Briefly describe your technical background..."
+                        className="resize-none"
+                        rows={3}
+                        value={formData.credentials}
+                        onChange={e => setFormData({ ...formData, credentials: e.target.value })}
+                      />
+                    </div>
                   </div>
 
                   <div className="flex gap-3 mt-8">
@@ -426,7 +452,7 @@ export default function TechnicianApply() {
                     </div>
                     <h2 className="text-xl font-bold uppercase tracking-tight">Technical Commitment</h2>
                     <p className="text-[10px] text-muted-foreground leading-relaxed px-4 uppercase tracking-wider">
-                      Review your credentials one final time. Submitting enters you into our professional audit queue.
+                      Review your credentials one final time. Submitting your application starts the verification process.
                     </p>
                   </div>
 
@@ -475,7 +501,7 @@ export default function TechnicianApply() {
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <ShieldCheck className="w-4 h-4 transition-transform group-hover:scale-110" />}
-                      {isSubmitting ? 'Transmitting...' : 'Full Submission'}
+                      {isSubmitting ? 'Sending Request...' : 'Submit Application'}
                     </Button>
                   </div>
                 </motion.div>
