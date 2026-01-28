@@ -1,0 +1,181 @@
+import { jsPDF } from 'jspdf';
+import type { RepairGuide, RepairStep, Part, Tool } from '@/types/repair';
+
+export async function exportGuideToPDF(guide: RepairGuide): Promise<void> {
+  const doc = new jsPDF({
+    orientation: 'portrait',
+    unit: 'mm',
+    format: 'a4',
+  });
+
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const margin = 20;
+  const contentWidth = pageWidth - margin * 2;
+  let yPosition = margin;
+
+  // Helper to add new page if needed
+  const checkPageBreak = (requiredHeight: number) => {
+    if (yPosition + requiredHeight > pageHeight - margin) {
+      doc.addPage();
+      yPosition = margin;
+      return true;
+    }
+    return false;
+  };
+
+  // Header
+  doc.setFontSize(24);
+  doc.setFont('helvetica', 'bold');
+  doc.text('FixFlow Repair Guide', margin, yPosition);
+  yPosition += 12;
+
+  // Device info
+  doc.setFontSize(14);
+  doc.setFont('helvetica', 'normal');
+  const deviceTitle = [
+    guide.deviceInfo.brand,
+    guide.deviceInfo.model,
+    `(${guide.deviceInfo.category})`,
+  ].filter(Boolean).join(' ');
+  doc.text(deviceTitle, margin, yPosition);
+  yPosition += 10;
+
+  // Difficulty and time
+  doc.setFontSize(10);
+  doc.setTextColor(100);
+  doc.text(`Difficulty: ${guide.diagnosis.difficulty} | Estimated Time: ${guide.diagnosis.estimatedTime}`, margin, yPosition);
+  doc.setTextColor(0);
+  yPosition += 15;
+
+  // Divider
+  doc.setDrawColor(200);
+  doc.line(margin, yPosition, pageWidth - margin, yPosition);
+  yPosition += 10;
+
+  // Tools Required
+  if (guide.tools.length > 0) {
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Tools Required', margin, yPosition);
+    yPosition += 8;
+
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
+    guide.tools.forEach((tool) => {
+      checkPageBreak(6);
+      const requiredText = tool.isRequired ? '(Required)' : '(Optional)';
+      doc.text(`• ${tool.name} ${requiredText}`, margin + 5, yPosition);
+      yPosition += 5;
+    });
+    yPosition += 10;
+  }
+
+  // Parts Required
+  if (guide.parts.length > 0) {
+    checkPageBreak(20);
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Parts Required', margin, yPosition);
+    yPosition += 8;
+
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
+    guide.parts.forEach((part) => {
+      checkPageBreak(12);
+      doc.text(`• ${part.name}`, margin + 5, yPosition);
+      yPosition += 5;
+      const costRange = `$${part.estimatedCost.min} - $${part.estimatedCost.max} ${part.estimatedCost.currency}`;
+      doc.setTextColor(100);
+      doc.text(`  Est. Cost: ${costRange}`, margin + 5, yPosition);
+      doc.setTextColor(0);
+      yPosition += 7;
+    });
+    yPosition += 10;
+  }
+
+  // Steps
+  doc.setFontSize(14);
+  doc.setFont('helvetica', 'bold');
+  checkPageBreak(20);
+  doc.text('Repair Steps', margin, yPosition);
+  yPosition += 10;
+
+  guide.steps.forEach((step, index) => {
+    checkPageBreak(35);
+
+    // Step number and title
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'bold');
+    doc.text(`Step ${step.stepNumber}: ${step.title}`, margin, yPosition);
+    yPosition += 7;
+
+    // Instruction
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
+    const instructionLines = doc.splitTextToSize(step.instruction, contentWidth - 10);
+    instructionLines.forEach((line: string) => {
+      checkPageBreak(5);
+      doc.text(line, margin + 5, yPosition);
+      yPosition += 5;
+    });
+
+    // Detailed notes
+    if (step.detailedNotes) {
+      yPosition += 2;
+      doc.setTextColor(100);
+      const notesLines = doc.splitTextToSize(`Note: ${step.detailedNotes}`, contentWidth - 10);
+      notesLines.forEach((line: string) => {
+        checkPageBreak(5);
+        doc.text(line, margin + 5, yPosition);
+        yPosition += 5;
+      });
+      doc.setTextColor(0);
+    }
+
+    // Warning
+    if (step.warningMessage) {
+      yPosition += 2;
+      doc.setTextColor(180, 0, 0);
+      doc.setFont('helvetica', 'bold');
+      const warningLines = doc.splitTextToSize(`⚠️ ${step.warningMessage}`, contentWidth - 10);
+      warningLines.forEach((line: string) => {
+        checkPageBreak(5);
+        doc.text(line, margin + 5, yPosition);
+        yPosition += 5;
+      });
+      doc.setTextColor(0);
+      doc.setFont('helvetica', 'normal');
+    }
+
+    // Tools for this step
+    if (step.toolsRequired.length > 0) {
+      yPosition += 2;
+      doc.setTextColor(100);
+      doc.text(`Tools: ${step.toolsRequired.join(', ')}`, margin + 5, yPosition);
+      doc.setTextColor(0);
+      yPosition += 5;
+    }
+
+    // Time estimate
+    if (step.estimatedTime) {
+      doc.setTextColor(100);
+      doc.text(`Time: ${step.estimatedTime}`, margin + 5, yPosition);
+      doc.setTextColor(0);
+      yPosition += 5;
+    }
+
+    yPosition += 10;
+  });
+
+  // Footer
+  const footerY = pageHeight - 10;
+  doc.setFontSize(8);
+  doc.setTextColor(150);
+  doc.text('Generated by FixFlow - AI-Powered Repair Guidance', margin, footerY);
+  doc.text(new Date().toLocaleDateString(), pageWidth - margin - 20, footerY);
+
+  // Save the PDF
+  const fileName = `FixFlow-${guide.deviceInfo.model || guide.deviceInfo.category}-Repair-Guide.pdf`;
+  doc.save(fileName);
+}

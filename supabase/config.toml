@@ -1,0 +1,4 @@
+project_id = "cjdpjmbmdkvixuwpiwtr"
+
+[functions.analyze-repair]
+verify_jwt = false

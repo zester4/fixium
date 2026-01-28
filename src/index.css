@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FixFlow Design System — Calm Technical Manual
+   All colors MUST be HSL for proper theming.
+*/
+
+@layer base {
+  :root {
+    /* Core backgrounds - warm paper tones */
+    --background: 50 20% 98%;
+    --foreground: 0 0% 11%;
+
+    /* Card surfaces */
+    --card: 50 15% 96%;
+    --card-foreground: 0 0% 11%;
+
+    /* Popovers and overlays */
+    --popover: 50 20% 98%;
+    --popover-foreground: 0 0% 11%;
+
+    /* Primary - Tool Blue for safe actions */
+    --primary: 210 65% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Muted technical gray */
+    --secondary: 45 10% 92%;
+    --secondary-foreground: 0 0% 20%;
+
+    /* Muted - Subtle backgrounds */
+    --muted: 45 10% 94%;
+    --muted-foreground: 0 0% 45%;
+
+    /* Accent - Tool Blue subtle */
+    --accent: 210 40% 94%;
+    --accent-foreground: 210 65% 35%;
+
+    /* Semantic Colors */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Caution - Amber for warnings */
+    --caution: 38 92% 50%;
+    --caution-foreground: 0 0% 10%;
+
+    /* Warning - Coral for critical steps */
+    --warning: 12 76% 61%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Success - Calm green for completion */
+    --success: 142 52% 42%;
+    --success-foreground: 0 0% 100%;
+
+    /* Safe zone - Blue highlight */
+    --safe: 210 65% 45%;
+    --safe-foreground: 0 0% 100%;
+
+    /* Connector yellow for flex cables */
+    --connector: 48 96% 53%;
+    --connector-foreground: 0 0% 10%;
+
+    /* Borders and inputs */
+    --border: 45 15% 88%;
+    --input: 45 15% 88%;
+    --ring: 210 65% 45%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar - kept for compatibility */
+    --sidebar-background: 50 15% 96%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 210 65% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 45 10% 92%;
+    --sidebar-accent-foreground: 0 0% 20%;
+    --sidebar-border: 45 15% 88%;
+    --sidebar-ring: 210 65% 45%;
+  }
+
+  .dark {
+    /* Dark mode - Deep workshop aesthetic */
+    --background: 220 15% 10%;
+    --foreground: 45 20% 95%;
+
+    --card: 220 12% 14%;
+    --card-foreground: 45 20% 95%;
+
+    --popover: 220 15% 12%;
+    --popover-foreground: 45 20% 95%;
+
+    --primary: 210 70% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 10% 20%;
+    --secondary-foreground: 45 20% 90%;
+
+    --muted: 220 10% 18%;
+    --muted-foreground: 45 10% 60%;
+
+    --accent: 210 30% 20%;
+    --accent-foreground: 210 70% 70%;
+
+    --destructive: 0 62% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --caution: 38 85% 55%;
+    --caution-foreground: 0 0% 10%;
+
+    --warning: 12 70% 55%;
+    --warning-foreground: 0 0% 100%;
+
+    --success: 142 50% 48%;
+    --success-foreground: 0 0% 100%;
+
+    --safe: 210 70% 55%;
+    --safe-foreground: 0 0% 100%;
+
+    --connector: 48 90% 55%;
+    --connector-foreground: 0 0% 10%;
+
+    --border: 220 10% 22%;
+    --input: 220 10% 22%;
+    --ring: 210 70% 55%;
+
+    --sidebar-background: 220 12% 12%;
+    --sidebar-foreground: 45 20% 90%;
+    --sidebar-primary: 210 70% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 10% 18%;
+    --sidebar-accent-foreground: 45 20% 90%;
+    --sidebar-border: 220 10% 22%;
+    --sidebar-ring: 210 70% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    background-image:
+      radial-gradient(circle at 2px 2px, hsl(var(--border) / 0.3) 1px, transparent 0);
+    background-size: 32px 32px;
+  }
+
+  /* Technical monospace for data, codes, step numbers */
+  .font-mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+}
+
+@layer components {
+
+  /* Premium Glass Card */
+  .glass-card {
+    @apply bg-background/60 backdrop-blur-md border border-border/50 shadow-sm;
+  }
+
+  /* Step number badges */
+  .step-badge {
+    @apply font-mono font-semibold text-sm w-8 h-8 rounded-full flex items-center justify-center bg-primary/10 text-primary border border-primary/20;
+  }
+
+  /* Annotation callout circles */
+  .callout-marker {
+    @apply font-mono font-bold text-xs w-6 h-6 rounded-full flex items-center justify-center border-2 bg-background shadow-sm;
+  }
+
+  /* Industrial Accent Border */
+  .industrial-border {
+    @apply border border-border relative;
+  }
+
+  .industrial-border::before {
+    content: '';
+    @apply absolute -top-1 -left-1 w-2 h-2 border-t-2 border-l-2 border-primary;
+  }
+
+  .industrial-border::after {
+    content: '';
+    @apply absolute -bottom-1 -right-1 w-2 h-2 border-b-2 border-r-2 border-primary;
+  }
+
+  /* Progress bar track */
+  .progress-track {
+    @apply h-1.5 w-full bg-muted/50 rounded-full overflow-hidden border border-border/30;
+  }
+
+  .progress-fill {
+    @apply h-full bg-primary transition-all duration-700 ease-in-out;
+  }
+
+  /* Semantic zone highlighting */
+  .zone-safe {
+    @apply border-safe bg-safe/5 backdrop-blur-sm;
+  }
+
+  .zone-caution {
+    @apply border-caution bg-caution/5 backdrop-blur-sm;
+  }
+
+  .zone-warning {
+    @apply border-warning bg-warning/5 backdrop-blur-sm;
+  }
+
+  .zone-connector {
+    @apply border-connector bg-connector/5 backdrop-blur-sm;
+  }
+
+  /* Touch-friendly tap targets */
+  .tap-target {
+    @apply min-h-[44px] min-w-[44px] flex items-center justify-center transition-all active:scale-95;
+  }
+
+  /* Card with subtle elevation */
+  .card-elevated {
+    @apply bg-card border border-border shadow-md hover:shadow-lg transition-shadow duration-300;
+  }
+
+  /* Confidence meter segments */
+  .confidence-segment {
+    @apply h-2 w-full rounded-sm transition-colors duration-300 border border-border/20;
+  }
+}
+
+@layer utilities {
+
+  /* High contrast text for outdoor/bright light */
+  .text-high-contrast {
+    @apply text-foreground font-semibold;
+  }
+
+  /* Pulsing attention indicator - Modernized */
+  @keyframes attention-pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    50% {
+      transform: scale(1.05);
+      opacity: 0.8;
+    }
+
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-attention {
+    animation: attention-pulse 3s ease-in-out infinite;
+  }
+
+  /* Fade in from below */
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.5s ease-out forwards;
+  }
+
+  /* Scale in */
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.4s ease-out forwards;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
