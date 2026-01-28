@@ -13,7 +13,9 @@ import {
   ArrowRight,
   Maximize2,
   Scan,
-  Activity
+  Activity,
+  BadgeCheck,
+  Zap
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -82,7 +84,7 @@ export const WelcomeScreen = forwardRef<HTMLDivElement>((_, ref) => {
 
                 <h1 className="text-[12vw] sm:text-7xl lg:text-8xl font-black tracking-tight text-foreground leading-[0.9] mb-6 sm:mb-8">
                   Fix it like <br />
-                  <span className="text-primary italic font-serif">an Expert.</span>
+                  <span className="text-primary italic">an Expert.</span>
                 </h1>
 
                 <p className="text-base sm:text-xl text-muted-foreground leading-relaxed max-w-lg mb-8 sm:mb-12 font-medium mx-auto lg:mx-0">
@@ -150,6 +152,56 @@ export const WelcomeScreen = forwardRef<HTMLDivElement>((_, ref) => {
         {/* Pro Features Section */}
         <ProFeaturesSection isPro={isPro} isLoggedIn={!!user} />
 
+        {/* The Protocol - How it Works */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="mb-16 sm:mb-24 py-16 px-8 rounded-[40px] bg-muted/5 border border-border/40 relative overflow-hidden"
+        >
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+          <div className="text-center mb-16">
+            <h2 className="font-mono text-[10px] sm:text-[11px] font-black tracking-[0.5em] text-primary mb-4 uppercase">
+              The Protocol
+            </h2>
+            <p className="text-3xl sm:text-4xl font-black tracking-tighter uppercase italic">
+              How Fixium <span className="text-primary not-italic">Restores Reality.</span>
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-12 relative">
+            {/* Step 1 */}
+            <div className="flex flex-col items-center text-center group">
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/20 mb-6 transition-all group-hover:scale-110 group-hover:rotate-3 shadow-lg shadow-primary/5">
+                <Scan className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="font-mono text-xs font-black tracking-widest uppercase mb-3">01. Optical Scan</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">Capture the structural failure point. Our vision models identifies the exact hardware model and component status.</p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="flex flex-col items-center text-center group">
+              <div className="w-16 h-16 rounded-2xl bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20 mb-6 transition-all group-hover:scale-110 group-hover:-rotate-3 shadow-lg shadow-indigo-500/5">
+                <Zap className="w-8 h-8 text-indigo-500" />
+              </div>
+              <h3 className="font-mono text-xs font-black tracking-widest uppercase mb-3">02. AI Diagnostics</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">Gemini 3.0 analyzes the breakage against 1.2M+ verified logs to generate a surgical repair path.</p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="flex flex-col items-center text-center group">
+              <div className="w-16 h-16 rounded-2xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20 mb-6 transition-all group-hover:scale-110 group-hover:rotate-3 shadow-lg shadow-amber-500/5">
+                <Wrench className="w-8 h-8 text-amber-500" />
+              </div>
+              <h3 className="font-mono text-xs font-black tracking-widest uppercase mb-3">03. Restoration</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">Execute the guided teardown. If the fix reaches critical complexity, seamlessly pivot to our expert marketplace.</p>
+            </div>
+
+            {/* Connector Lines (Desktop only) */}
+            <div className="hidden sm:block absolute top-8 left-[calc(16.6%+4rem)] right-[calc(16.6%+4rem)] h-px bg-gradient-to-r from-primary/20 via-indigo-500/20 to-amber-500/20 -z-10" />
+          </div>
+        </motion.section>
+
         {/* Categories We Support */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
@@ -188,6 +240,155 @@ export const WelcomeScreen = forwardRef<HTMLDivElement>((_, ref) => {
             ))}
           </div>
         </motion.section>
+
+        {/* Marketplace Teaser */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="mb-16 sm:mb-24"
+        >
+          <div className="rounded-[40px] bg-gradient-to-br from-primary/5 to-transparent border border-primary/10 overflow-hidden relative">
+            <div className="absolute inset-0 opacity-[0.03] bg-[url('/images/grid-pattern.png')] bg-repeat" />
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 p-8 sm:p-12 items-center relative z-10">
+              <div className="text-center lg:text-left">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary mb-6">
+                  <BadgeCheck className="w-3.5 h-3.5" />
+                  <span className="text-[10px] font-mono font-bold tracking-widest uppercase">Verified Experts</span>
+                </div>
+                <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4 uppercase italic">
+                  Complete Repair <br /><span className="text-primary not-italic">Marketplace.</span>
+                </h2>
+                <p className="text-muted-foreground leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">
+                  Some repairs require a specialist's touch. Connect with vetted technicians, request custom quotes, and get your device fixed by the best in the industry.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <Link to="/marketplace">
+                    <Button size="lg" className="w-full sm:w-auto font-mono font-bold tracking-widest uppercase h-14 rounded-2xl bg-primary text-primary-foreground hover:bg-primary/90">
+                      Find a Technician
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
+                  <Link to="/technician-apply">
+                    <Button variant="outline" size="lg" className="w-full sm:w-auto font-mono font-bold tracking-widest uppercase h-14 rounded-2xl border-primary/20 hover:bg-primary/5">
+                      Apply as Pro
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+              <div className="relative group">
+                <div className="aspect-video rounded-3xl bg-black/40 border border-white/10 overflow-hidden backdrop-blur-sm shadow-2xl relative">
+                  {/* ADVANCED SPECIALIST RADAR SVG */}
+                  <svg className="w-full h-full text-primary" viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* Radial Background */}
+                    <circle cx="200" cy="112.5" r="80" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 4" className="opacity-20" />
+                    <circle cx="200" cy="112.5" r="50" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 2" className="opacity-10" />
+
+                    {/* Rotating Scanner Line */}
+                    <motion.line
+                      x1="200" y1="112.5" x2="200" y2="32.5"
+                      stroke="currentColor" strokeWidth="1.5"
+                      className="opacity-40"
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                      style={{ originX: "200px", originY: "112.5px" }}
+                    />
+
+                    {/* Specialist Blips (Animated Avatars) */}
+                    <motion.g
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: [0.2, 1, 0.2] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                    >
+                      <circle cx="150" cy="70" r="4" fill="currentColor" />
+                      <circle cx="150" cy="70" r="10" stroke="currentColor" strokeWidth="0.5" className="opacity-30" />
+                    </motion.g>
+
+                    <motion.g
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: [0.2, 1, 0.2] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 1.2 }}
+                    >
+                      <circle cx="260" cy="90" r="4" fill="currentColor" />
+                      <circle cx="260" cy="90" r="10" stroke="currentColor" strokeWidth="0.5" className="opacity-30" />
+                    </motion.g>
+
+                    <motion.g
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: [0.2, 1, 0.2] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 1.8 }}
+                    >
+                      <circle cx="210" cy="150" r="4" fill="currentColor" />
+                      <circle cx="210" cy="150" r="10" stroke="currentColor" strokeWidth="0.5" className="opacity-30" />
+                    </motion.g>
+
+                    {/* Floating Info Tags */}
+                    <rect x="50" y="40" width="70" height="20" rx="4" fill="currentColor" className="opacity-[0.05]" />
+                    <text x="60" y="53" className="fill-primary font-mono text-[8px] font-bold opacity-40 uppercase tracking-widest">Specialist</text>
+
+                    <rect x="280" y="160" width="80" height="20" rx="4" fill="currentColor" className="opacity-[0.05]" />
+                    <text x="290" y="173" className="fill-primary font-mono text-[8px] font-bold opacity-40 uppercase tracking-widest">Verified</text>
+                  </svg>
+
+                  {/* Technical Overlay */}
+                  <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent flex justify-between items-end">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                        <span className="font-mono text-[7px] text-primary/60 uppercase tracking-[0.2em]">Network Active</span>
+                      </div>
+                      <p className="font-mono text-[10px] text-white font-bold tracking-tighter uppercase italic">Fixium Specialist Grid</p>
+                    </div>
+                    <div className="font-mono text-[8px] text-white/40 tracking-[0.3em] uppercase">0x4F_ALLOCATION</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Community & Knowledge Hub */}
+        <section className="mb-16 sm:mb-24 grid lg:grid-cols-2 gap-6">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="p-8 sm:p-10 rounded-[32px] bg-card border border-border/50 hover:border-primary/20 transition-all group relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 p-6 opacity-[0.05] group-hover:opacity-[0.1] transition-opacity">
+              <Activity className="w-32 h-32 text-primary" />
+            </div>
+            <Activity className="w-8 h-8 text-primary mb-6" />
+            <h3 className="text-2xl font-black uppercase tracking-tight mb-3">Fixium Community</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-8 max-w-sm">
+              Join a global network of fixers. Share your repair stories, ask for help on tricky diagnostics, and contribute to the hive mind.
+            </p>
+            <Link to="/community">
+              <Button variant="link" className="p-0 h-auto font-mono text-xs uppercase tracking-widest text-primary hover:text-primary/80">
+                Enter Forums <ChevronRight className="w-3 h-3 ml-1" />
+              </Button>
+            </Link>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="p-8 sm:p-10 rounded-[32px] bg-card border border-border/50 hover:border-primary/20 transition-all group relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 p-6 opacity-[0.05] group-hover:opacity-[0.1] transition-opacity">
+              <Scan className="w-32 h-32 text-indigo-500" />
+            </div>
+            <Scan className="w-8 h-8 text-indigo-500 mb-6" />
+            <h3 className="text-2xl font-black uppercase tracking-tight mb-3">Diagnostic Database</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-8 max-w-sm">
+              Access thousands of verified repair logs. Search by device model, symptom, or error code to find proven solutions instantly.
+            </p>
+            <Button variant="link" className="p-0 h-auto font-mono text-xs uppercase tracking-widest text-indigo-400 hover:text-indigo-300">
+              Search Registry <ChevronRight className="w-3 h-3 ml-1" />
+            </Button>
+          </motion.div>
+        </section>
 
         {/* Community Testimonials */}
         <div className="mb-16 sm:mb-24">

@@ -114,6 +114,39 @@ export function DashboardScreen() {
               </motion.button>
             </section>
 
+            {/* Marketplace & Community Hub */}
+            <div className="grid sm:grid-cols-2 gap-6">
+              <motion.div
+                whileHover={{ y: -4 }}
+                className="p-6 rounded-[2.5rem] bg-gradient-to-br from-primary/5 to-transparent border border-primary/20 relative overflow-hidden group"
+              >
+                <div className="absolute top-0 right-0 p-6 opacity-[0.05] group-hover:opacity-[0.1] transition-opacity">
+                  <Wrench className="w-24 h-24 text-primary" />
+                </div>
+                <Wrench className="w-8 h-8 text-primary mb-4" />
+                <h3 className="text-xl font-black uppercase tracking-tight mb-2">Marketplace</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed mb-6">Connect with specialists for complex hardware repairs.</p>
+                <Link to="/marketplace">
+                  <Button variant="outline" size="sm" className="font-mono text-[10px] tracking-widest rounded-full px-4 h-8 border-primary/20 hover:bg-primary/10">Browse Experts</Button>
+                </Link>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ y: -4 }}
+                className="p-6 rounded-[2.5rem] bg-gradient-to-br from-indigo-500/5 to-transparent border border-indigo-500/20 relative overflow-hidden group"
+              >
+                <div className="absolute top-0 right-0 p-6 opacity-[0.05] group-hover:opacity-[0.1] transition-opacity">
+                  <Zap className="w-24 h-24 text-indigo-500" />
+                </div>
+                <Zap className="w-8 h-8 text-indigo-500 mb-4" />
+                <h3 className="text-xl font-black uppercase tracking-tight mb-2">Community</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed mb-6">Discuss diagnostics and share repair success stories.</p>
+                <Link to="/community">
+                  <Button variant="outline" size="sm" className="font-mono text-[10px] tracking-widest rounded-full px-4 h-8 border-indigo-500/20 hover:bg-indigo-500/10">Join Discussion</Button>
+                </Link>
+              </motion.div>
+            </div>
+
             {/* In Progress */}
             <section>
               <div className="flex items-center gap-3 mb-4 px-1">

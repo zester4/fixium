@@ -1,98 +1,105 @@
-# Guided Repair Companion
+<div align="center">
+  <img src="/logo-fixium.png" width="120" height="120" alt="Fixium Logo" />
+  <h1>FIXIUM</h1>
+  <p><strong>The Future of Guided Care & Hardware Mastery.</strong></p>
 
-A production-grade, AI-powered event-driven platform designed to assist users in diagnosing and repairing electronic devices. This application leverages modern serverless architecture to provide real-time, visual-based repair guidance.
+  [![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+  [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
+  [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+  [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
+  [![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+</div>
 
-## 🚀 Overview
+---
 
-The Guided Repair Companion streamlines the DIY repair process. Users can select their device, capture or upload photos of the damage, and receive an instant, AI-generated diagnosis along with a comprehensive, step-by-step repair guide including parts and tools requirements.
+## 🏛 The Vision
 
-### Key Features
+**Fixium** is not just a repair companion; it is a high-fidelity ecosystem designed to bridge the gap between complex hardware failure and terminal resolution. By combining **Computer Vision**, **Large Language Models (Gemini 3.0)**, and a **Global Professional Marketplace**, Fixium empowers both the weekend DIYer and the professional bench technician with precision data and verified specialist access.
 
-- **Visual Diagnosis**: Uses advanced AI (via Google Gemini) to analyze photos of damaged devices.
-- **Smart Repair Guides**: Dynamically generated step-by-step instructions tailored to the specific damage.
-- **Parts & Tools Checklist**: Automatic identification of required components and specialized tools.
-- **Interactive Progress Tracking**: Step-by-step navigation with completion status.
-- **Community & Professionals**: Features for technician applications and repair history tracking.
-- **PDF Export**: Generate portable repair guides for offline use.
+## ✨ Core Pillars
 
-## 🛠 Tech Stack
+### 🧠 Tactical AI Diagnostics
+Fixium utilizes advanced vision models to analyze device telemetry and visual input. From micro-soldering fractures to structural battery degradation, our tactical engine provides:
+- **Zero-Error Identification**: Precise model and component detection.
+- **Dynamic SOP Generation**: Standard Operating Procedures tailored to the exact state of your hardware.
+- **Confidence Scoring**: Real-time reliability metrics for every suggested repair path.
 
-### Frontend
-- **Framework**: [React](https://reactjs.org/) with [Vite](https://vitejs.dev/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) based on Radix UI
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
-- **Data Fetching**: [TanStack Query (React Query)](https://tanstack.com/query/latest)
+### 🛠 The Professional Marketplace
+A vetted, high-trust environment where hardware specialists and clients converge.
+- **Expertise Verification**: Multistage technical audit for all incoming specialists.
+- **Humanized Engagement**: Clinical jargon is replaced by clear, actionable communication.
+- **Secure Contracting**: Automated scope-of-work finalization and digital signature workflows.
 
-### Backend & Infrastructure
-- **Platform**: [Supabase](https://supabase.com/) (Auth, Database, Edge Functions)
-- **AI Integration**: [Google Gemini](https://deepmind.google/technologies/gemini/) via Lovable AI Gateway
-- **Deployment**: Serverless Edge Functions (Deno)
+### 💎 Premium Experience
+Designed with an industrial, high-tech aesthetic, Fixium offers a workspace that feels like a mission control center.
+- **Glassmorphic UI**: A sophisticated, translucent design language powered by Tailwind and Framer Motion.
+- **Dark Mode Native**: Optimized for low-light workshop environments.
+- **Micro-Animations**: Real-time feedback loops that provide a tactile feel to digital interactions.
 
-## 🏗 Project Structure
+---
 
-```text
-src/
-├── components/
-│   ├── community/    # Community and social features (ratings, etc.)
-│   ├── repair/       # Repair-specific UI (ConfidenceMeter, StepCard, etc.)
-│   ├── screens/      # Main application flow screens
-│   └── ui/           # Reusable shadcn/ui components
-├── contexts/         # React Contexts (Authentication)
-├── data/             # Mock data and static content
-├── hooks/            # Custom React hooks
-├── integrations/     # Third-party integrations (Supabase)
-├── lib/              # Utility libraries
-├── pages/            # Top-level page components
-├── store/            # Zustand state stores
-├── types/            # TypeScript type definitions
-└── utils/            # Helper functions (PDF export, etc.)
-```
+## 🛠 Engineering Stack
 
-## 🚦 Getting Started
+### Frontend Architecture
+- **Engine**: [Vite](https://vitejs.dev/) + [React 18](https://reactjs.org/)
+- **Logic**: [TypeScript](https://www.typescriptlang.org/) (Strict Mode)
+- **Styling**: [Vanilla CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) + [Tailwind CSS](https://tailwindcss.com/)
+- **UI System**: [Shadcn/UI](https://ui.shadcn.com/) (Radix Primitives)
+- **Fluidity**: [Framer Motion](https://www.framer.com/motion/)
+- **Data Layer**: [TanStack Query v5](https://tanstack.com/query/latest)
 
-### Prerequisites
-- Node.js (v18 or later)
-- npm or pnpm
-- Supabase CLI (for local backend development)
+### Backend & Neural Layer
+- **Core**: [Supabase](https://supabase.com/) (PostgreSQL + PostgREST)
+- **Auth**: Supabase GoTrue (JWT-based session management)
+- **Intelligence**: Google [Gemini 3.0](https://deepmind.google/technologies/gemini/) via Edge Functions
+- **File Storage**: Supabase Storage for high-res diagnostic imagery
 
-### Local Development
+---
 
-1. **Clone the repository**
+## 🚦 Deployment & Development
+
+### Local Initialization
+
+1. **Clone the Command Center**
    ```bash
    git clone <repository-url>
-   cd guided-repair-companion
+   cd fixium
    ```
 
-2. **Install dependencies**
+2. **Sync Dependencies**
    ```bash
    npm install
    ```
 
-3. **Set up Environment Variables**
-   Create a `.env` file in the root directory and add your Supabase credentials:
+3. **Environment Configuration**
+   Create a `.env` file at the root:
    ```env
-   VITE_SUPABASE_URL=your_supabase_url
-   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+   VITE_SUPABASE_URL=your_project_url
+   VITE_SUPABASE_PUBLISHABLE_KEY=your_publishable_anon_key
+   VITE_SUPABASE_PROJECT_ID=your_project_id
+   VITE_GEMINI_API_KEY=your_gemini_api_key
    ```
 
-4. **Start the development server**
+4. **Launch Dev Mode**
    ```bash
    npm run dev
    ```
 
-5. **Run Tests**
-   ```bash
-   npm run test
-   ```
+---
 
-## 🌐 Serverless Architecture
+## 🧪 System Verification
 
-The project utilizes Supabase Edge Functions for compute-intensive tasks:
-- `analyze-repair`: An edge function that receives device photos, communicates with the Gemini AI model, and returns a structured repair plan in JSON format.
+To ensure protocol integrity, run the automated test suite:
+```bash
+npm run test
+```
 
-## 📄 License
+## 📜 Intellectual Property
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the **MIT License**. For commercial inquiries or partnership protocols, please visit the [About Page](file:///c:/Users/mseyy/Downloads/guided-fix/src/pages/About.tsx).
+
+---
+
+<div align="center">
+  <p><strong>FIXIUM // ALWAYS READY // 2026</strong></p>
+</div>
