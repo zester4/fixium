@@ -77,7 +77,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-bold tracking-tight text-[11px] sm:text-xs mb-1">Direct Engineering</h4>
-                    <p className="text-[10px] sm:text-xs text-muted-foreground leading-relaxed line-clamp-2 lg:line-clamp-none">Talk to the team building FixFlow.</p>
+                    <p className="text-[10px] sm:text-xs text-muted-foreground leading-relaxed line-clamp-2 lg:line-clamp-none">Talk to the team building Fixium.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4 p-4 lg:p-0 rounded-2xl bg-muted/20 lg:bg-transparent border border-border/50 lg:border-0">
@@ -163,7 +163,7 @@ export default function Contact() {
       <footer className="py-12 sm:py-16 bg-muted/10 border-t border-border/30 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <p className="text-[9px] sm:text-[10px] text-muted-foreground/40 font-mono tracking-[0.3em] sm:tracking-[0.4em]">
-            FixFlow global operations // 2026
+            Fixium global operations // 2026
           </p>
         </div>
       </footer>

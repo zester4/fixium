@@ -11,7 +11,7 @@ export default function PrivacyPolicy() {
       id: "01",
       title: "Introduction",
       icon: FileText,
-      content: "This Privacy Policy describes how FixFlow ('we', 'us', or 'our') collects, uses, and shares your personal information when you use our website, mobile application, and Smart Repair Assistant services. We are committed to protecting your privacy through technical precision and transparent data practices."
+      content: "This Privacy Policy describes how Fixium ('we', 'us', or 'our') collects, uses, and shares your personal information when you use our website, mobile application, and Smart Repair Assistant services. We are committed to protecting your privacy through technical precision and transparent data practices."
     },
     {
       id: "02",
@@ -90,12 +90,12 @@ export default function PrivacyPolicy() {
             {sections.map((section) => (
               <div key={section.id} className="grid lg:grid-cols-12 gap-8 items-start pb-12 border-b border-border/30 last:border-0">
                 <div className="lg:col-span-1">
-                   <span className="font-mono text-xs font-black text-primary/40 tracking-tighter">{section.id}</span>
+                  <span className="font-mono text-xs font-black text-primary/40 tracking-tighter">{section.id}</span>
                 </div>
                 <div className="lg:col-span-3">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center border border-primary/10">
-                       <section.icon className="w-5 h-5 text-primary" />
+                      <section.icon className="w-5 h-5 text-primary" />
                     </div>
                     <h3 className="font-bold uppercase tracking-tight text-foreground text-sm">
                       {section.title}
@@ -111,20 +111,20 @@ export default function PrivacyPolicy() {
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="p-10 rounded-[40px] bg-muted/30 border border-border/50">
-               <UserCheck className="w-8 h-8 text-primary mb-6" />
-               <h4 className="text-xl font-bold uppercase tracking-tight text-foreground mb-4">Your Data Rights</h4>
-               <p className="text-sm text-muted-foreground leading-relaxed mb-8">You have the absolute right to view, modify, or permanently erase your diagnostic history. We provide self-service tools in your profile to purge all visual and technical data from our subsystems instantly.</p>
-               <Button variant="outline" className="w-full font-mono text-[10px] font-bold uppercase tracking-widest h-12">
-                 Access Data Dashboard
-               </Button>
+              <UserCheck className="w-8 h-8 text-primary mb-6" />
+              <h4 className="text-xl font-bold uppercase tracking-tight text-foreground mb-4">Your Data Rights</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-8">You have the absolute right to view, modify, or permanently erase your diagnostic history. We provide self-service tools in your profile to purge all visual and technical data from our subsystems instantly.</p>
+              <Button variant="outline" className="w-full font-mono text-[10px] font-bold uppercase tracking-widest h-12">
+                Access Data Dashboard
+              </Button>
             </div>
             <div className="p-10 rounded-[40px] bg-primary text-primary-foreground shadow-2xl shadow-primary/20">
-               <Share2 className="w-8 h-8 text-white mb-6" />
-               <h4 className="text-xl font-bold uppercase tracking-tight text-white mb-4">Privacy Inquiries</h4>
-               <p className="text-sm opacity-80 leading-relaxed mb-8">For complex data requests or specialized privacy inquiries, our legal and technical team is available for direct consultation.</p>
-               <Button onClick={() => navigate('/contact')} variant="secondary" className="w-full font-mono text-[10px] font-bold uppercase tracking-widest h-12">
-                 Contact Privacy Team
-               </Button>
+              <Share2 className="w-8 h-8 text-white mb-6" />
+              <h4 className="text-xl font-bold uppercase tracking-tight text-white mb-4">Privacy Inquiries</h4>
+              <p className="text-sm opacity-80 leading-relaxed mb-8">For complex data requests or specialized privacy inquiries, our legal and technical team is available for direct consultation.</p>
+              <Button onClick={() => navigate('/contact')} variant="secondary" className="w-full font-mono text-[10px] font-bold uppercase tracking-widest h-12">
+                Contact Privacy Team
+              </Button>
             </div>
           </div>
         </motion.div>

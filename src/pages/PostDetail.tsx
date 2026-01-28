@@ -330,7 +330,7 @@ export default function PostDetail() {
             {/* Footer Info */}
             <footer className="py-20 flex flex-col items-center justify-center opacity-20">
                 <MessageSquare className="w-8 h-8 mb-4" />
-                <p className="font-mono text-[8px] tracking-[0.5em] text-center">End of Discussion // FixFlow Community Support</p>
+                <p className="font-mono text-[8px] tracking-[0.5em] text-center">End of Discussion // Fixium Community Support</p>
             </footer>
         </div>
     );

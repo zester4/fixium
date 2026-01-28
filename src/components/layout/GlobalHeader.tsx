@@ -32,11 +32,11 @@ export function GlobalHeader() {
                 {/* Logo Section */}
                 <Link to="/" className="flex items-center gap-3 group">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center industrial-border transition-all duration-500 group-hover:scale-105 group-hover:shadow-xl group-hover:shadow-primary/20 overflow-hidden p-1.5 relative">
-                        <img src="/logo-3d.png" alt="FixFlow Logo" className="w-full h-full object-contain relative z-10" />
+                        <img src="/logo-fixium.png" alt="Fixium Logo" className="w-full h-full object-contain relative z-10" />
                         <div className="absolute inset-0 bg-primary/20 blur-xl scale-50 group-hover:scale-100 transition-transform duration-700 opacity-50" />
                     </div>
                     <div className="flex flex-col">
-                        <span className="font-mono text-base sm:text-lg font-black tracking-tighter text-foreground leading-tight">FixFlow</span>
+                        <span className="font-mono text-base sm:text-lg font-black tracking-tighter text-foreground leading-tight">Fixium</span>
                         <span className="font-mono text-[8px] tracking-[0.2em] text-primary/60 leading-none">Guided Care</span>
                     </div>
                 </Link>
@@ -149,7 +149,7 @@ export function GlobalHeader() {
                             <div className="absolute bottom-12 left-6 right-6 text-center opacity-20">
                                 <div className="flex items-center justify-center gap-2 mb-2">
                                     <Sparkles className="w-3 h-3 text-primary" />
-                                    <span className="font-mono text-[8px] tracking-[0.5em]">FixFlow Companion</span>
+                                    <span className="font-mono text-[8px] tracking-[0.5em]">Fixium Companion</span>
                                 </div>
                                 <p className="font-mono text-[7px] tracking-widest leading-none text-muted-foreground">Always Ready // v2.0.4</p>
                             </div>

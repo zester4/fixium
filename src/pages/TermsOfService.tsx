@@ -11,13 +11,13 @@ export default function TermsOfService() {
       id: "01",
       title: "Agreement to Terms",
       icon: UserCheck,
-      content: "By accessing or using the FixFlow platform, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you must immediately terminate your use of our Smart Repair Assistant and associated services."
+      content: "By accessing or using the Fixium platform, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you must immediately terminate your use of our Smart Repair Assistant and associated services."
     },
     {
       id: "02",
       title: "DIY Repair Disclaimer",
       icon: AlertTriangle,
-      content: "FIXFLOW PROVIDES REPAIR GUIDANCE 'AS-IS'. Repairing consumer electronics and other physical goods involves significant risk, including electric shock, fire, and permanent property damage. You assume all responsibility for your safety and the integrity of your devices. FixFlow, its partners, and its developers are not liable for any direct or indirect damages, injuries, or data loss resulting from your use of our guides."
+      content: "FIXIUM PROVIDES REPAIR GUIDANCE 'AS-IS'. Repairing consumer electronics and other physical goods involves significant risk, including electric shock, fire, and permanent property damage. You assume all responsibility for your safety and the integrity of your devices. Fixium, its partners, and its developers are not liable for any direct or indirect damages, injuries, or data loss resulting from your use of our guides."
     },
     {
       id: "03",
@@ -29,7 +29,7 @@ export default function TermsOfService() {
       id: "04",
       title: "Intellectual Property",
       icon: BookOpen,
-      content: "The FixFlow interface, Smart Diagnosis algorithms, and generated repair guides are the exclusive property of FixFlow. We grant you a limited, non-exclusive, non-transferable license to access our guides for personal, non-commercial use only."
+      content: "The Fixium interface, Smart Diagnosis algorithms, and generated repair guides are the exclusive property of Fixium. We grant you a limited, non-exclusive, non-transferable license to access our guides for personal, non-commercial use only."
     },
     {
       id: "05",
@@ -41,13 +41,13 @@ export default function TermsOfService() {
       id: "06",
       title: "Indemnification",
       icon: Gavel,
-      content: "You agree to indemnify and hold FixFlow harmless from any claims, losses, or liabilities (including legal fees) arising from your misuse of the platform, your violation of these terms, or any damage caused during a repair attempted while using our services."
+      content: "You agree to indemnify and hold Fixium harmless from any claims, losses, or liabilities (including legal fees) arising from your misuse of the platform, your violation of these terms, or any damage caused during a repair attempted while using our services."
     },
     {
       id: "07",
       title: "Modifications to Service",
       icon: Scale,
-      content: "FixFlow reserves the right to modify or discontinue any part of the service (including AI features and guide libraries) at any time without prior notice. We are not liable to you or any third party for any modification, price change, or suspension of the service."
+      content: "Fixium reserves the right to modify or discontinue any part of the service (including AI features and guide libraries) at any time without prior notice. We are not liable to you or any third party for any modification, price change, or suspension of the service."
     }
   ];
 
@@ -96,12 +96,12 @@ export default function TermsOfService() {
             {sections.map((section) => (
               <div key={section.id} className="grid lg:grid-cols-12 gap-8 items-start pb-12 border-b border-border/30 last:border-0">
                 <div className="lg:col-span-1">
-                   <span className="font-mono text-xs font-black text-primary/40 tracking-tighter">{section.id}</span>
+                  <span className="font-mono text-xs font-black text-primary/40 tracking-tighter">{section.id}</span>
                 </div>
                 <div className="lg:col-span-3">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center border border-primary/10">
-                       <section.icon className="w-5 h-5 text-primary" />
+                      <section.icon className="w-5 h-5 text-primary" />
                     </div>
                     <h3 className="font-bold uppercase tracking-tight text-foreground text-sm">
                       {section.title}
@@ -116,11 +116,11 @@ export default function TermsOfService() {
           </div>
 
           <div className="p-12 rounded-[40px] bg-muted/30 border border-border/50 text-center">
-             <h4 className="font-mono text-xs font-bold uppercase tracking-widest text-foreground mb-4">Final Agreement</h4>
-             <p className="text-sm text-muted-foreground leading-relaxed mb-10 max-w-lg mx-auto">By clicking 'Initialize Repair' or similar actions on our platform, you confirm your acceptance of these terms and acknowledge the risks associated with DIY technical work.</p>
-             <Button onClick={() => navigate('/')} className="h-16 px-12 font-mono text-sm font-black uppercase tracking-[0.2em] shadow-2xl shadow-primary/20">
-               I Acknowledge & Accept
-             </Button>
+            <h4 className="font-mono text-xs font-bold uppercase tracking-widest text-foreground mb-4">Final Agreement</h4>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-10 max-w-lg mx-auto">By clicking 'Initialize Repair' or similar actions on our platform, you confirm your acceptance of these terms and acknowledge the risks associated with DIY technical work.</p>
+            <Button onClick={() => navigate('/')} className="h-16 px-12 font-mono text-sm font-black uppercase tracking-[0.2em] shadow-2xl shadow-primary/20">
+              I Acknowledge & Accept
+            </Button>
           </div>
         </motion.div>
       </main>

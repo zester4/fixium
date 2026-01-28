@@ -34,7 +34,7 @@ export default function About() {
               of Repair.
             </h1>
             <p className="text-lg sm:text-2xl text-muted-foreground leading-relaxed font-medium">
-              FixFlow is a response to a world built for the temporary. We believe that ownership is only real when you have the right to repair, understand, and sustain the things you own.
+              Fixium is a response to a world built for the temporary. We believe that ownership is only real when you have the right to repair, understand, and sustain the things you own.
             </p>
           </div>
 
@@ -51,7 +51,7 @@ export default function About() {
                   Every year, millions of tons of consumer electronics end up in landfills. Often, these devices are discarded not because they are beyond repair, but because the path to fixing them has been intentionally obscured by manufacturers.
                 </p>
                 <p>
-                  FixFlow's mission is to democratize technical knowledge. By using smart visual analysis and community-vetted guides, we lower the barrier to entry for DIY repair, keeping devices in hands and out of landfills.
+                  Fixium's mission is to democratize technical knowledge. By using smart visual analysis and community-vetted guides, we lower the barrier to entry for DIY repair, keeping devices in hands and out of landfills.
                 </p>
                 <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 pt-4 sm:pt-6">
                   <div className="p-5 sm:p-6 rounded-2xl bg-muted/30 border border-border/50">
@@ -115,7 +115,7 @@ export default function About() {
                   We believe that technical documentation should be as beautiful and clear as a luxury manual. We've moved away from the robotic, confusing language of the past to create an experience that reduces anxiety and builds confidence.
                 </p>
                 <p>
-                  Every word in FixFlow is carefully humanized to ensure that even the most complex disassembly feels manageable. We don't just tell you what to do; we explain <em>why</em> it matters and how to stay safe during the process.
+                  Every word in Fixium is carefully humanized to ensure that even the most complex disassembly feels manageable. We don't just tell you what to do; we explain <em>why</em> it matters and how to stay safe during the process.
                 </p>
                 <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-primary/5 border border-primary/10 italic text-foreground/80 text-sm sm:text-base">
                   "Repair is more than just a functional necessity—it's an act of mindfulness and a rebellion against the temporary."
@@ -164,7 +164,7 @@ export default function About() {
       <footer className="py-12 sm:py-16 bg-muted/10 border-t border-border/30 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <p className="text-[9px] sm:text-[10px] text-muted-foreground/40 font-mono uppercase tracking-[0.3em] sm:tracking-[0.4em]">
-            FIXFLOW_OS // DESIGNED_FOR_SUSTAINABILITY // GLOBAL_OPERATIONS
+            FIXIUM_OS // DESIGNED_FOR_SUSTAINABILITY // GLOBAL_OPERATIONS
           </p>
         </div>
       </footer>

@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import type { RepairGuide } from '@/types/repair';
 
-const STORAGE_KEY = 'fixflow_repair_history';
+const STORAGE_KEY = 'fixium_repair_history';
 const MAX_HISTORY_ITEMS = 20;
 
 export interface RepairHistoryItem {

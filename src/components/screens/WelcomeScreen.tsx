@@ -133,7 +133,7 @@ export const WelcomeScreen = forwardRef<HTMLDivElement>((_, ref) => {
                   <img
                     src="/images/hero-3d.png"
                     className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
-                    alt="FixFlow 3D Assistant"
+                    alt="Fixium 3D Assistant"
                   />
 
                 </div>
@@ -240,10 +240,10 @@ export const WelcomeScreen = forwardRef<HTMLDivElement>((_, ref) => {
             <div className="col-span-2 sm:col-span-1 flex flex-col items-center sm:items-start">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center border border-primary/20 p-1.5 overflow-hidden">
-                  <img src="/logo-3d.png" alt="" className="w-full h-full object-contain" />
+                  <img src="/logo-fixium.png" alt="" className="w-full h-full object-contain" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-mono text-base font-black tracking-tighter leading-none mb-1">FixFlow</span>
+                  <span className="font-mono text-base font-black tracking-tighter leading-none mb-1">Fixium</span>
                   <span className="font-mono text-[8px] tracking-[0.2em] text-primary/60 leading-none">Guided Care</span>
                 </div>
               </div>
@@ -267,7 +267,7 @@ export const WelcomeScreen = forwardRef<HTMLDivElement>((_, ref) => {
           </div>
           <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-border/50 to-transparent mb-8" />
           <p className="text-[10px] text-muted-foreground/40 font-mono tracking-[0.4em]">
-            FixFlow // Your Repair Companion // {new Date().getFullYear()}
+            Fixium // Your Repair Companion // {new Date().getFullYear()}
           </p>
         </div>
       </footer>

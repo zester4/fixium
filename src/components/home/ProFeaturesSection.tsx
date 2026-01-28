@@ -65,7 +65,7 @@ export function ProFeaturesSection({ isPro, isLoggedIn }: ProFeaturesSectionProp
               <div className="flex items-center gap-2 mb-1">
                 <Crown className="w-5 h-5 text-amber-500" />
                 <h3 className="font-mono text-lg font-bold text-foreground tracking-tight">
-                  FIXFLOW PRO
+                  FIXIUM PRO
                 </h3>
               </div>
               <p className="text-xs font-mono uppercase tracking-tighter text-muted-foreground">

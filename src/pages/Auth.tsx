@@ -138,7 +138,7 @@ export default function Auth() {
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 mb-4 shadow-sm">
               <Wrench className="w-8 h-8 text-primary" strokeWidth={1.5} />
             </div>
-            <h2 className="font-mono text-2xl font-bold text-foreground tracking-tight">FixFlow</h2>
+            <h2 className="font-mono text-2xl font-bold text-foreground tracking-tight">Fixium</h2>
             <p className="text-xs font-mono uppercase tracking-tighter text-muted-foreground mt-1">
               {isSignUp ? 'Join our community' : 'Welcome back'}
             </p>

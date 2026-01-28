@@ -220,7 +220,7 @@ export function DashboardScreen() {
       <footer className="py-12 bg-muted/5 border-t border-border/30 mt-auto">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="text-[9px] text-muted-foreground/30 font-mono tracking-[0.4em]">
-            FixFlow // Your Personal Dashboard // 2026
+            Fixium // Your Personal Dashboard // 2026
           </p>
         </div>
       </footer>

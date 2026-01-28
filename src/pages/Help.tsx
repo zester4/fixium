@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
-import { 
-  Search, 
-  Book, 
-  ShieldAlert, 
-  Camera, 
+import {
+  Search,
+  Book,
+  ShieldAlert,
+  Camera,
   HelpCircle,
   ArrowLeft,
   ChevronRight,
@@ -58,7 +58,7 @@ const categories = [
     ]
   },
   {
-    title: "FixFlow Pro Features",
+    title: "Fixium Pro Features",
     icon: Zap,
     questions: [
       {
@@ -113,8 +113,8 @@ export default function Help() {
             </p>
             <div className="relative max-w-xl mx-auto">
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/40" />
-              <Input 
-                placeholder="Search for guides, safety protocols, or tool tips..." 
+              <Input
+                placeholder="Search for guides, safety protocols, or tool tips..."
                 className="h-16 pl-14 bg-muted/20 border-border/50 font-mono text-sm shadow-2xl transition-all focus:bg-background"
               />
             </div>
@@ -137,81 +137,81 @@ export default function Help() {
 
           {/* Detailed Categories */}
           <div className="grid lg:grid-cols-12 gap-16">
-             <div className="lg:col-span-4 space-y-8">
-                <div className="sticky top-24 p-8 rounded-[32px] bg-primary text-primary-foreground overflow-hidden">
-                   <div className="absolute top-0 right-0 p-4 opacity-10">
-                      <HelpCircle className="w-24 h-24" />
-                   </div>
-                   <h2 className="text-2xl font-bold uppercase tracking-tighter mb-4 leading-none text-white">Need more <br />clarity?</h2>
-                   <p className="text-sm opacity-80 mb-8 leading-relaxed">Our support engineers are available for specialized technical inquiries.</p>
-                   <Button 
-                    variant="secondary" 
-                    onClick={() => navigate('/contact')}
-                    className="w-full font-mono text-[10px] font-bold uppercase tracking-widest h-12"
-                   >
-                     Open Support Ticket
-                   </Button>
+            <div className="lg:col-span-4 space-y-8">
+              <div className="sticky top-24 p-8 rounded-[32px] bg-primary text-primary-foreground overflow-hidden">
+                <div className="absolute top-0 right-0 p-4 opacity-10">
+                  <HelpCircle className="w-24 h-24" />
                 </div>
-                
-                <div className="p-8 rounded-[32px] bg-muted/30 border border-border/50">
-                   <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-primary mb-4">Latest Updates</h4>
-                   <ul className="space-y-4">
-                      {[
-                        "Added support for 2026 MacBook Pro internal fans",
-                        "New battery safety protocol for wearable devices",
-                        "Improved AI recognition for stripped screw heads"
-                      ].map((update, i) => (
-                        <li key={i} className="flex gap-3 text-xs leading-relaxed text-muted-foreground italic">
-                           <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1 flex-shrink-0" />
-                           {update}
-                        </li>
-                      ))}
-                   </ul>
-                </div>
-             </div>
+                <h2 className="text-2xl font-bold uppercase tracking-tighter mb-4 leading-none text-white">Need more <br />clarity?</h2>
+                <p className="text-sm opacity-80 mb-8 leading-relaxed">Our support engineers are available for specialized technical inquiries.</p>
+                <Button
+                  variant="secondary"
+                  onClick={() => navigate('/contact')}
+                  className="w-full font-mono text-[10px] font-bold uppercase tracking-widest h-12"
+                >
+                  Open Support Ticket
+                </Button>
+              </div>
 
-             <div className="lg:col-span-8 space-y-16">
-                {categories.map((section) => (
-                  <section key={section.title}>
-                    <div className="flex items-center gap-4 mb-8">
-                      <div className="w-10 h-10 rounded-xl bg-primary/5 border border-primary/10 flex items-center justify-center">
-                        <section.icon className="w-5 h-5 text-primary" />
-                      </div>
-                      <h2 className="font-mono text-sm font-black uppercase tracking-[0.3em] text-foreground italic">
-                        {section.title}
-                      </h2>
+              <div className="p-8 rounded-[32px] bg-muted/30 border border-border/50">
+                <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-primary mb-4">Latest Updates</h4>
+                <ul className="space-y-4">
+                  {[
+                    "Added support for 2026 MacBook Pro internal fans",
+                    "New battery safety protocol for wearable devices",
+                    "Improved AI recognition for stripped screw heads"
+                  ].map((update, i) => (
+                    <li key={i} className="flex gap-3 text-xs leading-relaxed text-muted-foreground italic">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1 flex-shrink-0" />
+                      {update}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="lg:col-span-8 space-y-16">
+              {categories.map((section) => (
+                <section key={section.title}>
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-10 h-10 rounded-xl bg-primary/5 border border-primary/10 flex items-center justify-center">
+                      <section.icon className="w-5 h-5 text-primary" />
                     </div>
-                    
-                    <Accordion type="single" collapsible className="w-full space-y-2">
-                      {section.questions.map((item, i) => (
-                        <AccordionItem key={i} value={`item-${section.title}-${i}`} className="border-none">
-                          <AccordionTrigger className="text-left font-bold text-base hover:no-underline hover:text-primary transition-colors py-6 px-6 rounded-2xl bg-muted/20 hover:bg-muted/40 data-[state=open]:bg-primary/5 data-[state=open]:text-primary border border-border/40">
-                            {item.q}
-                          </AccordionTrigger>
-                          <AccordionContent className="text-muted-foreground leading-relaxed text-sm p-8 bg-muted/10 rounded-b-2xl border-x border-b border-border/30">
-                            {item.a}
-                          </AccordionContent>
-                        </AccordionItem>
-                      ))}
-                    </Accordion>
-                  </section>
-                ))}
-             </div>
+                    <h2 className="font-mono text-sm font-black uppercase tracking-[0.3em] text-foreground italic">
+                      {section.title}
+                    </h2>
+                  </div>
+
+                  <Accordion type="single" collapsible className="w-full space-y-2">
+                    {section.questions.map((item, i) => (
+                      <AccordionItem key={i} value={`item-${section.title}-${i}`} className="border-none">
+                        <AccordionTrigger className="text-left font-bold text-base hover:no-underline hover:text-primary transition-colors py-6 px-6 rounded-2xl bg-muted/20 hover:bg-muted/40 data-[state=open]:bg-primary/5 data-[state=open]:text-primary border border-border/40">
+                          {item.q}
+                        </AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground leading-relaxed text-sm p-8 bg-muted/10 rounded-b-2xl border-x border-b border-border/30">
+                          {item.a}
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </section>
+              ))}
+            </div>
           </div>
 
           {/* Call to Action Footer */}
           <div className="mt-32 p-12 rounded-[40px] border border-dashed border-primary/30 text-center">
-             <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-8">
-                <MessageCircle className="w-8 h-8 text-primary" />
-             </div>
-             <h2 className="text-3xl font-black uppercase tracking-tighter mb-4">Still have questions?</h2>
-             <p className="text-muted-foreground text-lg mb-10 max-w-lg mx-auto">We're building the future of repair together. If you can't find what you're looking for, our team is ready to help.</p>
-             <Button 
-                onClick={() => navigate('/contact')}
-                className="h-16 px-12 font-mono text-sm font-black uppercase tracking-[0.2em] shadow-2xl shadow-primary/20"
-             >
-                Connect to Support
-             </Button>
+            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-8">
+              <MessageCircle className="w-8 h-8 text-primary" />
+            </div>
+            <h2 className="text-3xl font-black uppercase tracking-tighter mb-4">Still have questions?</h2>
+            <p className="text-muted-foreground text-lg mb-10 max-w-lg mx-auto">We're building the future of repair together. If you can't find what you're looking for, our team is ready to help.</p>
+            <Button
+              onClick={() => navigate('/contact')}
+              className="h-16 px-12 font-mono text-sm font-black uppercase tracking-[0.2em] shadow-2xl shadow-primary/20"
+            >
+              Connect to Support
+            </Button>
           </div>
         </motion.div>
       </main>
